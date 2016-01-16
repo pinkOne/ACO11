@@ -22,7 +22,7 @@ public class TestStudent {
 
         s2.printInfo();
 
-        
+
         // String + String , String + primitive = String
     }
 }
