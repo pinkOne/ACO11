@@ -18,9 +18,22 @@ public class Group {
         freePlace++;
     }
 
-    public void deleteLastStudent(){
+    public Student deleteLastStudent(){
         freePlace--;
         students[freePlace] = null;
+        return null;
+    }
+
+    public Student findById(String id){
+        return null;
+    }
+
+    public Student[] filterByName(String name){
+        return null;
+    }
+
+    public Student[] filterByCity(String city){
+        return null;
     }
 
     public String allStudents(){
@@ -29,5 +42,9 @@ public class Group {
 
     public String getGroupName() {
         return groupName;
+    }
+
+    public int getSize(){
+        return freePlace;
     }
 }
