@@ -1,5 +1,8 @@
 package ua.artcode.week2.day1;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Created by serhii on 23.01.16.
  */
@@ -25,19 +28,61 @@ public class Group {
     }
 
     public Student findById(String id){
+        if(id == null){
+            System.err.println("id is null");
+            return null;
+        }
+
+        for (int i = 0; i < freePlace; i++) {
+            if(students[i].getIdNum().equals(id)){
+                return students[i];
+            }
+        }
+
+        System.err.println("No student found");
         return null;
     }
 
     public Student[] filterByName(String name){
-        return null;
+        Student[] res = new Student[freePlace];
+
+        int curr = 0;
+        for (int i = 0; i < freePlace; i++) {
+            if(students[i].getName().equals(name)){
+                res[curr] = students[i];
+                curr++;
+            }
+        }
+
+        return Arrays.copyOf(res,curr);
     }
 
     public Student[] filterByCity(String city){
-        return null;
+        Student[] res = new Student[freePlace];
+
+        int curr = 0;
+        for (int i = 0; i < freePlace; i++) {
+            Address address = students[i].getAddress();
+            if(address != null && address.getCity().equals(city)){
+                res[curr] = students[i];
+                curr++;
+            }
+        }
+
+        return Arrays.copyOf(res,curr);
     }
 
-    public String allStudents(){
-        return null;
+    public String asString(){
+        String res = "GROUP NAME " + groupName +
+                "\n"+ "Count " + freePlace + "\n";
+
+        for (int i = 0; i < freePlace; i++) {
+            Student student = students[i];
+            res += student.asString() + "\n";
+        }
+
+
+        return res;
     }
 
     public String getGroupName() {
@@ -46,5 +91,9 @@ public class Group {
 
     public int getSize(){
         return freePlace;
+    }
+
+    public Student[] sort() {
+        return null;
     }
 }

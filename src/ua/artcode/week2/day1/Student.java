@@ -15,9 +15,13 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, int rank) {
+    // run before constructors
+    {
         this.idNum = String.valueOf(idCounter);
         idCounter++;
+    }
+
+    public Student(String name, int rank) {
         this.name = name;
         this.rank = rank;
     }
@@ -90,4 +94,10 @@ public class Student {
     public void setContact(Contact contact) {
         this.contact = contact;
     }
+
+    public String asString(){
+        return String.format("id %s, name %s, birthday %s, address %s",
+                                idNum, name, birthday.asString(), address.asString());
+    }
+
 }

@@ -39,4 +39,8 @@ public class MyDate {
     public void setDay(int day) {
         this.day = day;
     }
+
+    public String asString() {
+        return String.format("%d-%d-%d", year,month,day);
+    }
 }

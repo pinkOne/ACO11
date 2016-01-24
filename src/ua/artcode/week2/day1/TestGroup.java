@@ -22,6 +22,7 @@ public class TestGroup {
 
         group.addStudent(student1);
         group.addStudent(student2);
+        System.out.println(group.asString());
 
         System.out.println();
         System.out.println((group.getSize() == 2) + " addStudent");
@@ -37,6 +38,12 @@ public class TestGroup {
 
         group.deleteLastStudent();
         System.out.println((group.getSize() == 1) + " deleteLast");
+        System.out.println();
+
+        Student[] sorted = group.sort();
+
+        System.out.println(group.asString());
+
     }
 
     /*private static void testAddStudent(){
