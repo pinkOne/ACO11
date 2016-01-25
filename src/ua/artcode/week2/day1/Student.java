@@ -1,5 +1,18 @@
 package ua.artcode.week2.day1;
 
+/*
+*
+* учиться
+   		добавить предмет
+   		удалить предмет из списка последний
+   		показать всю информацию о предметах
+        получить средний бал за все предметы
+*
+*
+* */
+
+import javax.security.auth.Subject;
+
 public class Student {
 
     private static double monthMoney = 790;
@@ -34,16 +47,40 @@ public class Student {
         this.contact = contact;
     }
 
+
+    public boolean addSubject(Subject subject){
+        // SubjectFactory.createSubject(subjId);
+        return false;
+    }
+
+    public int subjectsCount(){
+        return 0;
+    }
+
+    public Subject[] getSubjects(){
+        return null;
+    }
+
+    public int averageMark(){
+        return 0;
+    }
+    /*
+    *
+    * @return total subject studied hours
+    *
+    * */
+    public int learn(String subjectId, int hours){
+        return 0;
+    }
+
+    public Subject getSubject(String subjId){
+        return null;
+    }
+
+
+
     public static double getMonthMoney() {
         return monthMoney;
-    }
-
-    public static void staticMeth(){
-        //rank++;
-    }
-
-    public void nonStaticMeth(){
-        monthMoney++;
     }
 
     public String getIdNum() {
