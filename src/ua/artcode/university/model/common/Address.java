@@ -1,4 +1,4 @@
-package ua.artcode.week2.day1;
+package ua.artcode.university.model.common;
 
 
 public class Address {

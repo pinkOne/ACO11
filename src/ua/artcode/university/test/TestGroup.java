@@ -1,4 +1,10 @@
-package ua.artcode.week2.day1;
+package ua.artcode.university.test;
+
+import ua.artcode.university.model.*;
+import ua.artcode.university.model.common.Address;
+import ua.artcode.university.model.common.Contact;
+import ua.artcode.university.model.common.MyDate;
+import ua.artcode.university.model.role.Student;
 
 /**
  * Created by serhii on 23.01.16.
