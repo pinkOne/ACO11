@@ -1,8 +1,10 @@
 package ua.artcode.university.model;
 
+import ua.artcode.university.model.additional.sort.HumanBirthDayComporator;
 import ua.artcode.university.model.common.Address;
 import ua.artcode.university.model.role.Student;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -10,23 +12,19 @@ import java.util.Arrays;
  */
 public class Group {
 
-    private int freePlace = 0;
     private String groupName;
-    private Student[] students = new Student[24];
+    private ArrayList<Student> students = new ArrayList<>();
 
     public Group(String groupName) {
         this.groupName = groupName;
     }
 
     public void addStudent(Student greenStudent){
-        students[freePlace] = greenStudent;
-        freePlace++;
+        students.add(greenStudent);
     }
 
     public Student deleteLastStudent(){
-        freePlace--;
-        students[freePlace] = null;
-        return null;
+        return students.remove(students.size() - 1);
     }
 
     public Student findById(String id){
@@ -35,9 +33,10 @@ public class Group {
             return null;
         }
 
-        for (int i = 0; i < freePlace; i++) {
-            if(students[i].getIdNum().equals(id)){
-                return students[i];
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            if(student.getIdNum().equals(id)){
+                return student;
             }
         }
 
@@ -46,41 +45,40 @@ public class Group {
     }
 
     public Student[] filterByName(String name){
-        Student[] res = new Student[freePlace];
+        ArrayList<Student> res = new ArrayList<>();
 
         int curr = 0;
-        for (int i = 0; i < freePlace; i++) {
-            if(students[i].getName().equals(name)){
-                res[curr] = students[i];
-                curr++;
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            if(student.getName().equals(name)){
+                res.add(student);
             }
         }
 
-        return Arrays.copyOf(res,curr);
+        return res.toArray(new Student[res.size()]);
     }
 
     public Student[] filterByCity(String city){
-        Student[] res = new Student[freePlace];
+        ArrayList<Student> res = new ArrayList<>();
 
-        int curr = 0;
-        for (int i = 0; i < freePlace; i++) {
-            Address address = students[i].getAddress();
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            Address address = student.getAddress();
             if(address != null && address.getCity().equals(city)){
-                res[curr] = students[i];
-                curr++;
+                res.add(student);
             }
         }
 
-        return Arrays.copyOf(res,curr);
+        return toArr(res);
     }
 
     public String asString(){
         String res = "GROUP NAME " + groupName +
-                "\n"+ "Count " + freePlace + "\n";
+                "\n"+ "Count " + students.size() + "\n";
 
-        for (int i = 0; i < freePlace; i++) {
-            Student student = students[i];
-            res += student.asString() + "\n";
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            res += student.toString() + "\n";
         }
 
 
@@ -92,10 +90,27 @@ public class Group {
     }
 
     public int getSize(){
-        return freePlace;
+        return students.size();
     }
 
-    public Student[] sort() {
-        return null;
+    public Student[] sortByName() {
+        Student[] forSort = toArr(students);
+
+        Arrays.sort(forSort);
+
+        return forSort;
     }
+
+    public Student[] sortByDate() {
+        Student[] forSort = toArr(students);
+
+        Arrays.sort(forSort, new HumanBirthDayComporator());
+
+        return forSort;
+    }
+
+    private Student[] toArr(ArrayList<Student> al){
+        return al.toArray(new Student[al.size()]);
+    }
+
 }

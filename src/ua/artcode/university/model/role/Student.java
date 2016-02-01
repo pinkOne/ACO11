@@ -20,7 +20,7 @@ import ua.artcode.world.role.ISportsman;
 
 import javax.security.auth.Subject;
 
-public class Student extends Human implements IShooter, ISportsman, IAlcoholic {
+public class Student extends Human implements Comparable<Student>, IShooter, ISportsman, IAlcoholic {
 
     private static double monthMoney = 790;
     private static int idCounter = 0;
@@ -78,7 +78,7 @@ public class Student extends Human implements IShooter, ISportsman, IAlcoholic {
         this.rank = rank;
     }
 
-    public String asString() {
+    public String toString() {
         return String.format("id %s, name %s, birthday %s, address %s",
                 idNum, getName(), getBirthday().asString(), getAddress().asString());
     }
@@ -122,5 +122,10 @@ public class Student extends Human implements IShooter, ISportsman, IAlcoholic {
     @Override
     public void doExercise() {
         System.out.println("student jump");
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return this.getName().compareTo(o.getName());
     }
 }
