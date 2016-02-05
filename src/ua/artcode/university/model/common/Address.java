@@ -1,8 +1,6 @@
-package ua.artcode.week2.day1;
+package ua.artcode.university.model.common;
 
-/**
- * Created by serhii on 23.01.16.
- */
+
 public class Address {
 
     private String country;
@@ -47,5 +45,10 @@ public class Address {
 
     public void setHouseNum(int houseNum) {
         this.houseNum = houseNum;
+    }
+
+    public String asString() {
+        return String.format("country:%s,city:%s,street:%s,houseNum:%d",
+                                    country,city,street,houseNum);
     }
 }

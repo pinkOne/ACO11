@@ -1,4 +1,6 @@
-package ua.artcode.week2.day1;
+package ua.artcode.university.test;
+
+import ua.artcode.university.model.role.Student;
 
 /**
  * Created by serhii on 23.01.16.

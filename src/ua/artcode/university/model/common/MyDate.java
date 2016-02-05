@@ -1,4 +1,4 @@
-package ua.artcode.week2.day1;
+package ua.artcode.university.model.common;
 
 /**
  * Created by serhii on 23.01.16.
@@ -38,5 +38,9 @@ public class MyDate {
 
     public void setDay(int day) {
         this.day = day;
+    }
+
+    public String asString() {
+        return String.format("%d-%d-%d", year,month,day);
     }
 }
